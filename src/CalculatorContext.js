@@ -4,7 +4,7 @@ const { Provider, Consumer } = createContext();
 
 const Operators = {
     '÷': (leftOperand, rightOperand) => leftOperand / rightOperand,
-    '*': (leftOperand, rightOperand) => leftOperand * rightOperand,
+    '×': (leftOperand, rightOperand) => leftOperand * rightOperand,
     '+': (leftOperand, rightOperand) => leftOperand + rightOperand,
     '-': (leftOperand, rightOperand) => leftOperand - rightOperand,
     '=': (leftOperand, rightOperand) => leftOperand
