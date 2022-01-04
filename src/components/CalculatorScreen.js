@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
+import Consumer  from "../CalculatorContext"
 
-function CalculatorScreen({ value }) 
-{
-    const [ text, setText ] = useState(value)
-
-    // autoscale effect
-    useEffect(() => {
-        autoScaleText();
-    })
-
-    function autoScaleText() {
-        setText(value)
-    }
-
-    return <div className="screen"><span className="text">{text}</span></div>;
+function CalculatorScreen() {
+    return (
+        <Consumer>
+            {ctx => {
+                return (
+                    <div className="screen">
+                        <span className="text">{ctx.equals}</span>
+                    </div>
+                )
+            }}
+        </Consumer>
+    );
+ 
 }
 
 export default CalculatorScreen
