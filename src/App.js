@@ -13,6 +13,13 @@ function App() {
   const [hasOperator, setHasOperator] = useState(false);
   const [equals, setEquals] = useState(0);
 
+  useEffect(() => {
+    if (expression.operator !== '') {
+      setHasOperator(true)
+    }
+    setEquals(ComputedExpression(expression))
+  }, [expression])
+
   const emitHandleClick = useCallback((val) => {
     const operand = !hasOperator ? 'leftOperand' : 'rightOperand';
     if (val.type === 'digit') {
@@ -31,14 +38,6 @@ function App() {
     
   }, [ expression, hasOperator ]);
 
-  useEffect(() => {
-    if (expression.operator !== '') {
-      setHasOperator(true)
-    }
-    setEquals(ComputedExpression(expression))
-  }, [expression])
-
-
   function processCxt(exp) {
     if (Operators.hasOwnProperty(exp.operator)) {
         return Operators[exp.operator](parseFloat(exp.leftOperand), parseFloat(exp.rightOperand))
@@ -46,13 +45,9 @@ function App() {
   }
 
   function ComputedExpression(expression) {
-    let str = '';
-    for (var key of Object.keys(expression)) {
-      if (key === 'util' || expression[key] === '=') continue;
-      if (key === 'equals') continue;
-      str += expression[key];
-    }
-
+    console.log('operator', expression.operator)
+    let str = !hasOperator ? expression.leftOperand : expression.rightOperand
+    console.log('str', str)
     return str !== '' ? str : 0;
   }
 
