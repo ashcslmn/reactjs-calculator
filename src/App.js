@@ -9,7 +9,7 @@ import {
   processToUtil,
   clone,
   hasOperator,
-  ComputedExpression
+  ComputedExpression,
 } from "./supports/CalculatorSupport";
 
 const initialState = {
@@ -29,13 +29,12 @@ function App() {
 
   const emitHandleClick = useCallback(
     (val) => {
-     
       const operand = !hasOperator(expression) ? "leftOperand" : "rightOperand";
 
       const handleDigit = () => {
         setExpression({
           ...expression,
-          ...{ [operand]: expression[operand] || '' + val.label },
+          ...{ [operand]: expression[operand] || "" + val.label },
         });
       };
 
@@ -59,14 +58,13 @@ function App() {
       } else {
         setExpression({ ...expression, ...{ [val.type]: val.label } });
       }
-
     },
     [equals, expression]
   );
 
   // will set the current output to the leftOperand
   // after util or operator triggers
-  function setOuputAndExpression(output, payload={}) {
+  function setOuputAndExpression(output, payload = {}) {
     setEquals(output);
     setExpression({ ...initialState, ...{ leftOperand: output }, ...payload });
   }
