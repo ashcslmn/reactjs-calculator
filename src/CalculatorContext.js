@@ -11,10 +11,15 @@ const Operators = {
 }
 
 const Utils = {
-    'AC': (util, payload) => {
-        payload = '';
-        return payload;
+    AC: () => {
+        return 0;
     },
+    '%': (payload) => {
+        return parseFloat(payload/100);
+    },
+    '±': (payload) => {
+        return -1 * parseFloat(payload);
+    }
 }
 
 function CalculatorContext({outputValue, operatorValue, leftOperandValue, rightOperandValue, equalsValue, children}) {

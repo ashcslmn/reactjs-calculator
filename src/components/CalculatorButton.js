@@ -10,7 +10,7 @@ function CalculatorButton(props) {
             return(
                 <button type="button" 
                     onClick={() => props.handleClick({ type:props.type, label: props.label })} 
-                    className={className}>
+                    className={`${className}${props.label === ctx.operator ? ' selected' : '' }`}>
                     {props.label}
                 </button>
             )
