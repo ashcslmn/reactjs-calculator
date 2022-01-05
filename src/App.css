@@ -55,8 +55,7 @@
 #calculator button:hover
 {
   -webkit-filter: brightness(120%);
-  /* filter: alpha(opacity=80);
-  opacity: .8; */
+  filter: brightness(120%);
 }
 
 #calculator button.util {
