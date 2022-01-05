@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
 
 const { Provider, Consumer } = createContext();
 
@@ -7,43 +7,49 @@ const Operators = {
     '×': (leftOperand, rightOperand) => leftOperand * rightOperand,
     '+': (leftOperand, rightOperand) => leftOperand + rightOperand,
     '-': (leftOperand, rightOperand) => leftOperand - rightOperand,
-    '=': (leftOperand, rightOperand) => leftOperand
-}
+    '=': (leftOperand, rightOperand) => leftOperand,
+};
 
 const Utils = {
     AC: () => {
         return 0;
     },
     '%': (payload) => {
-        return parseFloat(payload/100);
+        return parseFloat(payload / 100);
     },
     '±': (payload) => {
         return -1 * parseFloat(payload);
-    }
-}
+    },
+};
 
-function CalculatorContext({outputValue, operatorValue, leftOperandValue, rightOperandValue, equalsValue, children}) {
-
-    const [ leftOperand, setLeftOperand] = useState('')
-    const [ operator, setOperator ] = useState(null)
-    const [ rightOperand, setRightOperand] = useState('')
-    const [ equals, setEquals ] = useState(false)
-
-    useEffect(() => {
-        setLeftOperand(leftOperandValue)
-    }, [leftOperandValue])
-
-    useEffect(() => {
-        setOperator(operatorValue)
-    }, [operatorValue]) 
+function CalculatorContext({
+    outputValue,
+    operatorValue,
+    leftOperandValue,
+    rightOperandValue,
+    equalsValue,
+    children,
+}) {
+    const [leftOperand, setLeftOperand] = useState('');
+    const [operator, setOperator] = useState(null);
+    const [rightOperand, setRightOperand] = useState('');
+    const [equals, setEquals] = useState(false);
 
     useEffect(() => {
-        setRightOperand(rightOperandValue)
-    }, [rightOperandValue])
+        setLeftOperand(leftOperandValue);
+    }, [leftOperandValue]);
 
     useEffect(() => {
-        setEquals(equalsValue)
-    }, [equalsValue])
+        setOperator(operatorValue);
+    }, [operatorValue]);
+
+    useEffect(() => {
+        setRightOperand(rightOperandValue);
+    }, [rightOperandValue]);
+
+    useEffect(() => {
+        setEquals(equalsValue);
+    }, [equalsValue]);
 
     return (
         <Provider
@@ -51,13 +57,12 @@ function CalculatorContext({outputValue, operatorValue, leftOperandValue, rightO
                 leftOperand,
                 operator,
                 rightOperand,
-                equals
+                equals,
             }}
         >
             {children}
         </Provider>
     );
-
 }
 
 export { CalculatorContext, Operators, Utils };

@@ -28,7 +28,6 @@
   background-color: black;
   font-size: 9rem;
   line-height: 1;
-  /* flex: 1; */
   position: relative;
   min-height: 100px;
   padding: 10px 10px 10px 10px;
@@ -52,7 +51,6 @@
   border-radius: 9999px;
   color: white;
 }
-
 
 #calculator button.util {
   color: black;
