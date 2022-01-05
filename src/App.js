@@ -78,7 +78,7 @@ function App() {
           rightOperandValue={expression.rightOperand}
           equalsValue={equals}
         >
-          <CalculatorScreen />
+          <CalculatorScreen equals={equals}/>
 
           <CalculatorButton
             type="util"

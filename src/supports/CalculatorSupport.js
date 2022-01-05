@@ -24,13 +24,16 @@ function hasOperator(expression) {
 }
 
 function ComputedExpression(exp) {
-  console.log(Object.values(exp)
-  .filter((item) => /^-?[0-9]\d*(\.\d+)?$/.test(item)))
   return (
     Object.values(exp)
-      .filter((item) => /^-?[0-9]\d*(\.\d+)?$/.test(item))
+      .filter((item) => /^-?[0-9]\d*(\.\d+)?(\.)?$/.test(item))
       .at(-1) || 0
   );
+}
+
+function toNumberFormat(number) {
+    const nf = new Intl.NumberFormat('en-US');  
+    return nf.format(number); 
 }
 
 export {
@@ -39,4 +42,5 @@ export {
   clone,
   hasOperator,
   ComputedExpression,
+  toNumberFormat
 };
