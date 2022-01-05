@@ -34,7 +34,7 @@ function App() {
       const handleDigit = () => {
         setExpression({
           ...expression,
-          ...{ [operand]: expression[operand] || "" + val.label },
+          ...{ [operand]: (expression[operand] || "") + val.label },
         });
       };
 

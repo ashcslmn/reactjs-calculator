@@ -24,6 +24,8 @@ function hasOperator(expression) {
 }
 
 function ComputedExpression(exp) {
+  console.log(Object.values(exp)
+  .filter((item) => /^-?[0-9]\d*(\.\d+)?$/.test(item)))
   return (
     Object.values(exp)
       .filter((item) => /^-?[0-9]\d*(\.\d+)?$/.test(item))
